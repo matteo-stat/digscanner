@@ -39,8 +39,8 @@ def get_start_px(img, crop_perc=0.05):
         else:
             dist = np.sum(th == 255, axis=1)
 
-        # exclude useless sides
-        dist = dist[np.where(dist < crop_px)]
+        # exclude useless sides, crop_px is reduced by a perc factor since binary mask is not 100% accurate
+        dist = dist[np.where(dist < crop_px * 0.9)]
 
         # remove extreme distances, useful since binary mask is not 100% accurate
         dist = dist[np.where((dist > np.percentile(dist, q=5)) & (dist < np.percentile(dist, q=95)))]
