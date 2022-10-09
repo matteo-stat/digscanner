@@ -3,7 +3,7 @@ import numpy as np
 import cv2 as cv
 
 
-def get_start_px(img, crop_perc=0.05):
+def get_borders_start_px(img, crop_perc=0.05):
     
     # pixels to consider as border
     crop_px = int(math.sqrt(img.shape[0]**2 + img.shape[1]**2) * crop_perc)
